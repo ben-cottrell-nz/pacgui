@@ -32,6 +32,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        alpm_backend.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -50,4 +51,12 @@ else()
     endif()
 endif()
 
-target_link_libraries(pacgui PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+add_executable(test
+    test.cpp)
+target_link_libraries(test
+    alpm)
+
+target_link_libraries(pacgui
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    alpm)
